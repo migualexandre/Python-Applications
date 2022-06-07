@@ -1,0 +1,23 @@
+# !pip install leafmap[lidar] open3d
+
+import os
+import leafmap
+import open3d as o3d
+
+#Import the LiDAR data
+filename = 'test.laz'
+
+#Read the LiDAR data
+laz = leafmap.read_lidar(filename)
+
+#The LAS header.
+laz.header
+
+#The number of points.
+laz.header.point_count
+
+#The list of features.
+list(laz.point_format.dimension_names)
+
+#Visualize LiDAR data using the open3d backend.
+leafmap.view_lidar(filename, backend='open3d')
